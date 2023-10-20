@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:orientation="vertical">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="15dp"
         app:cardCornerRadius="15dp"
-        app:cardElevation="20dp"
-        android:layout_marginTop="20dp">
+        app:cardElevation="20dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -22,16 +24,39 @@
                 android:id="@+id/btn1"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                app:iconSize="25dp"
-               android:layout_marginHorizontal="10dp"
+                android:layout_marginHorizontal="10dp"
                 app:icon="@drawable/baseline_person_24"
+                app:iconSize="25dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" Ashish \n +918469562233 \n ashishtadvi@gnu.ac.in.com \nkevadia colony -393151"
+                android:text=" Ashish"
+                app:layout_constraintEnd_toStartOf="@+id/btn2"
+                app:layout_constraintHorizontal_bias="0.142"
+                app:layout_constraintStart_toEndOf="@+id/btn1"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/mobile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="+918469562233"
+                app:layout_constraintEnd_toStartOf="@+id/btn2"
+                app:layout_constraintHorizontal_bias="0.177"
+                app:layout_constraintStart_toEndOf="@+id/btn1"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="ashishtadvi@gnu.ac.in.com"
                 app:layout_constraintEnd_toStartOf="@+id/btn2"
                 app:layout_constraintStart_toEndOf="@+id/btn1"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -40,14 +65,25 @@
                 android:id="@+id/btn2"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                app:iconSize="25dp"
-               android:layout_marginEnd="10dp"
+                android:layout_marginEnd="10dp"
                 app:icon="@drawable/baseline_location_on_24"
+                app:iconSize="25dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/addr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="21dp"
+                android:layout_marginTop="16dp"
+                android:text="kevadia colony -393151"
+                app:layout_constraintEnd_toStartOf="@+id/btn2"
+                app:layout_constraintHorizontal_bias="0.075"
+                app:layout_constraintStart_toEndOf="@+id/btn1"
+                app:layout_constraintTop_toBottomOf="@+id/mobile" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
-
 
 
 </LinearLayout>
