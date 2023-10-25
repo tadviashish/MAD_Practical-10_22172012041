@@ -1,9 +1,16 @@
 package com.example.mad_practical_10_22172012041
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import android.widget.ListView
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import org.json.JSONArray
+import org.json.JSONException
+import org.json.JSONObject
 
 class MainActivity : AppCompatActivity() {
     private lateinit var personlistview:ListView;
@@ -13,21 +20,46 @@ class MainActivity : AppCompatActivity() {
 
         personlistview = findViewById<ListView>(R.id.listview)
 
-        val button:Button = findViewById(R.id.fbutton)
+        val button:FloatingActionButton = findViewById(R.id.fbutton)
 
+        button.setOnClickListener {
+            setpersondatatolistview()
+
+        }
 
     }
 
     fun setpersondatatolistview()
     {
-        personlistview.adapter = PersonAdapter(this, arrayListOf(
-            Person("101","Ashish","ashish10@gnu.ac.in","+918469569988","Kevadia Colony",202.652,201.41),
-            Person("102","Shrey","shrey@gnu.ac.in","+912563415288","Kevadia Colony",202.2,201.21),
-            Person("103","Brijesh","brijesh@gnu.ac.in","+918462563148","Kevadia Colony",202.652,201.21),
-            Person("104","Krunal","krunal@gnu.ac.in","+912563984988","Kevadia Colony",202.52,201.41),
-            Person("105","Virang","virang@gnu.ac.in","+918456325588","Kevadia Colony",202.152,201.41)
-
-
-        ))
+         CoroutineScope(Dispatchers.IO).launch{
+        try {
+            val data = HttpRequest().makeServiceCall("https://api.json-generator.com/templates/qjeKFdjkXCdK/data","rbn0rerl1k0d3mcwgw7dva2xuwk780z1hxvyvrb1")
+            withContext(Dispatchers.Main) {
+                try {
+                    if(data != null)
+                        runOnUiThread{getPersonDetailsFromJson(data)}
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
+    }
+    private fun getPersonDetailsFromJson(sJson: String?) {
+        val personList = ArrayList<Person>()
+        try {
+            val jsonArray = JSONArray(sJson)
+            for (i in 0 until jsonArray.length()) {
+                val jsonObject = jsonArray[i] as JSONObject
+                val person = Person(jsonObject)
+                personList.add(person)
+            }
+            personlistview.adapter = PersonAdapter(this, personList)
+        } catch (ee: JSONException) {
+            ee.printStackTrace()
+        }
+    }
+
 }
