@@ -1,8 +1,7 @@
 package com.example.mad_practical_10_22172012041
 
-import android.content.Intent
+
 import android.os.Bundle
-import android.widget.Button
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -15,7 +14,7 @@ import org.json.JSONException
 import org.json.JSONObject
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var personlistview:ListView;
+    private lateinit var personlistview:ListView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -33,7 +32,8 @@ class MainActivity : AppCompatActivity() {
     {
          CoroutineScope(Dispatchers.IO).launch{
         try {
-            val data = HttpRequest().makeServiceCall("https://api.json-generator.com/templates/qjeKFdjkXCdK/data","rbn0rerl1k0d3mcwgw7dva2xuwk780z1hxvyvrb1")
+            val data = HttpRequest().makeServiceCall("https://api.json-generator.com/templates/qjeKFdjkXCdK/data",
+                "rbn0rerl1k0d3mcwgw7dva2xuwk780z1hxvyvrb1")
             withContext(Dispatchers.Main) {
                 try {
                     if(data != null)

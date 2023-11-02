@@ -3,7 +3,6 @@ package com.example.mad_practical_10_22172012041
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -19,7 +18,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private var lat:Double = 0.0
     private var log:Double = 0.0
     private var title = ""
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
