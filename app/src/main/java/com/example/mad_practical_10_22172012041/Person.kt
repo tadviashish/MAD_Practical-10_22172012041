@@ -13,7 +13,7 @@ class Person(var id:String,var name:String,var emailid:String,var phoneno:String
         * "email":"lloyd.york@undefined.net",
         * "phone":"+1 (817) 545-3660",
         * "address":"311 Livonia Avenue, Belva, Ohio, 6019"}*/
-    constructor(jsonObject: JSONObject):this("","","","","",0.0,0.0) {
+    constructor(jsonObject: JSONObject):this("","","","","",0.0,0.0)  {
         id = jsonObject.getString("id")
         emailid = jsonObject.getString("email")
         phoneno = jsonObject.getString("phone")

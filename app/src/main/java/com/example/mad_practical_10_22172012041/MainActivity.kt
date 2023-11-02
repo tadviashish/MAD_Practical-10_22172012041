@@ -1,6 +1,8 @@
 package com.example.mad_practical_10_22172012041
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -21,10 +23,8 @@ class MainActivity : AppCompatActivity() {
         personlistview = findViewById<ListView>(R.id.listview)
 
         val button:FloatingActionButton = findViewById(R.id.fbutton)
-
         button.setOnClickListener {
             setpersondatatolistview()
-
         }
 
     }
